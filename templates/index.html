@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FLASK CSV File Upload</title>
+  </head>
+  <body>
+    <div>
+      <form action="/" method="POST">
+        {% for data_list in data_list %} {{data_list.question}}<br /><br />
+        <input
+          type="radio"
+          name="options"
+          id="options"
+          value="option1"
+        />Option1: {{data_list.option1}}<br />
+        <input
+          type="radio"
+          name="options"
+          id="options"
+          value="option2"
+        />Option2: {{data_list.option2}}<br />
+        <input
+          type="radio"
+          name="options"
+          id="options"
+          value="option3"
+        />Option3: {{data_list.option3}}<br />
+        <input
+          type="radio"
+          name="options"
+          id="options"
+          value="option4"
+        />Option4: {{data_list.option4}}<br />
+        {% endfor %}
+
+        <button type="submit" id="submit">Submit</button>
+      </form>
+    </div>
+
+    <a href="{{ url_for('upload') }}">Click here for file upload</a>
+  </body>
+</html>
