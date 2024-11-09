@@ -1,0 +1,15 @@
+.subj_course {
+  text-align: center;
+  font-size: 4rem;
+  font-family: "Lobster", sans-serif;
+}
+.course {
+  background-color: grey;
+  height: 15rem;
+  width: 25rem;
+  margin-left: 50px;
+}
+.subj_courselist {
+  display: flex;
+  justify-content: center;
+}

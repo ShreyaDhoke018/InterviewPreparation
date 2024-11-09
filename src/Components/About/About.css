@@ -1,0 +1,41 @@
+.about {
+  display: flex;
+  justify-content: space-between;
+}
+.left_about {
+  height: 94.7vh;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+}
+.right_about {
+  background-color: #e7e8e2;
+  height: 94.7vh;
+  background-image: url("src/assets/about.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 50%;
+}
+.info_about {
+  display: flex;
+  /* justify-content: center; */
+  flex-direction: column;
+  gap: 1rem;
+  padding: 30px;
+}
+.header_about {
+  font-size: 50px;
+  font-family: "Lobster", sans-serif;
+}
+.subheader_about {
+  font-size: 4rem;
+  font-family: "Lobster", sans-serif;
+}
+.detail_about {
+  font-size: 1.2rem;
+  text-align: justify;
+  font-family: "DM Serif Display", serif;
+}
