@@ -1,0 +1,68 @@
+.register_box {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  height: 94.7vh;
+  background: #e7e8e2;
+}
+.register_innerBox {
+  display: flex;
+  height: 35rem;
+  width: 50rem;
+  justify-content: space-between;
+}
+.register_left {
+  width: 60%;
+  height: 35rem;
+}
+.register_img {
+  height: 100%;
+  border-radius: 8px;
+}
+.register_right {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  justify-content: center;
+  margin-left: 80px;
+  border-radius: 8px;
+}
+.register_head {
+  font-size: 45px;
+  font-family: "Lobster", sans-serif;
+}
+.register_form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: baseline;
+  font-family: "DM Serif Display", serif;
+}
+.register_field {
+  border: none;
+}
+.login_link {
+  text-decoration: none;
+  color: #940242;
+  font-size: 13px;
+}
+.register_btn {
+  border: none;
+  background: #940242;
+  color: white;
+  font-size: 18px;
+  padding: 0 20px;
+  font-family: "Lobster", sans-serif;
+}
+
+.form_container {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+.error_msg {
+  font-size: 11px;
+  color: red;
+}

@@ -1,0 +1,45 @@
+.downloadFile {
+  height: 94.7vh;
+  display: flex;
+  justify-content: space-between;
+}
+.downloadFile_sidenav {
+  background: #e7e8e2;
+  height: 94.7vh;
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+.downloadFile .options {
+  height: 50%;
+  text-decoration: none;
+  width: 100%;
+}
+.downloadFile .options_ul {
+  list-style: none;
+  gap: 2rem;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  margin-top: 40px;
+}
+.downloadFile .options_li {
+  text-decoration: none;
+  width: 100%;
+  padding: 5px;
+  text-align: center;
+}
+.downloadFile .options_li a {
+  color: #940242;
+}
+.downloadFile .options_li.active {
+  background: #940242;
+  opacity: 70%;
+}
+.downloadFile .options_li.active a {
+  color: white;
+  opacity: 100%;
+}

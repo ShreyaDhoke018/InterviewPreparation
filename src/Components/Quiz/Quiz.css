@@ -1,0 +1,126 @@
+.quiz {
+  display: flex;
+  justify-content: space-between;
+}
+.quiz_sidenav {
+  background: #e7e8e2;
+  height: 94.7vh;
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+.options {
+  height: 50%;
+  text-decoration: none;
+  width: 100%;
+  font-family: "DM Serif Display", serif;
+}
+.options_ul {
+  list-style: none;
+  gap: 2rem;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  margin-top: 40px;
+}
+.options_li {
+  text-decoration: none;
+  width: 100%;
+  padding: 5px;
+  text-align: center;
+}
+.options_li a {
+  color: #940242;
+}
+.options_li.active {
+  background: #940242;
+  opacity: 70%;
+}
+.options_li.active a {
+  color: white;
+  opacity: 100%;
+}
+.quiz_link {
+  text-decoration: none;
+  font-size: 20px;
+}
+.main_window {
+  height: 94.7vh;
+  width: 85%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+}
+.quiz_box {
+  background: #e7e8e2;
+  height: 85%;
+  width: 80%;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.quiz_question {
+  font-size: 30px;
+  margin-top: 30px;
+  margin-left: 35px;
+  font-family: "Lobster", sans-serif;
+}
+.quiz_options {
+  margin: 15px;
+  font-family: "DM Serif Display", serif;
+}
+.quiz_individualOption {
+  display: flex;
+  gap: 2rem;
+  border: solid;
+  padding: 5px;
+  border-radius: 5px;
+}
+input[type="radio"] {
+  display: none;
+}
+.quiz_radio {
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+input[type="radio"]:checked + .quiz_radio {
+  background-color: #940242;
+  color: white;
+  opacity: 85%;
+}
+.quiz_submit {
+  display: flex;
+  justify-content: end;
+  margin-right: 15px;
+}
+.quiz_submitBtn {
+  border: none;
+  background: #940242;
+  color: white;
+  padding: 0 20px;
+  font-size: 20px;
+  border-radius: 5px;
+  font-family: "DM Serif Display", serif;
+}
+.quiz_next {
+  display: flex;
+  justify-content: end;
+  margin-right: 15px;
+}
+.quiz_nextBtn {
+  border: none;
+  background: #940242;
+  color: white;
+  padding: 0 20px;
+  font-size: 20px;
+  border-radius: 5px;
+  font-family: "DM Serif Display", serif;
+}
