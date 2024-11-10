@@ -51,7 +51,7 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent default form submission behavior
     if (password !== confirm_password) {
-      alert("Passwords don't match!");
+      alert("Passwords doesn't match!");
       return; // Exit early if passwords do not match
     }
     if (email.length == 0 || password.length == 0) {
@@ -70,6 +70,10 @@ const Register = () => {
         .then(function (response) {
           if (response?.data && response.status == 200) {
             alert(response?.data?.message);
+            setEmail("");
+            setUsername("");
+            setPassword("");
+            setConfirm_password("");
           } else if (response?.status != 200) {
             console.error("Connection failed");
           } else {

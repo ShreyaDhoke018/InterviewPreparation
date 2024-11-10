@@ -10,6 +10,8 @@ import Quiz from "./Components/Quiz/Quiz";
 import { Route, Routes } from "react-router-dom";
 import DownloadFile from "./Components/DownloadFile/DownloadFile";
 import AddQuestion from "./Components/AddQuestion/AddQuestion";
+import RegisterAdmin from "./Components/RegisterAdmin/RegisterAdmin";
+import Profile from "./Components/Profile/Profile";
 
 const App = () => {
   return (
@@ -27,6 +29,8 @@ const App = () => {
         <Route path="/quiz" element={<Quiz />}></Route>
         <Route path="/add" element={<AddQuestion />}></Route>
         <Route path="/download" element={<DownloadFile />}></Route>
+        <Route path="/registerAdmin" element={<RegisterAdmin />}></Route>
+        <Route path="/profile" element={<Profile />}></Route>
       </Routes>
     </div>
   );

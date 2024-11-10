@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Quiz.css";
 import { useMatch, useResolvedPath } from "react-router-dom";
 import { Link, Navigate } from "react-router-dom";
+import axios from "axios";
 
 const Quiz = () => {
+  const [admin, setAdmin] = useState(false);
+
   const loggedIn = localStorage.getItem("isLoggedIn");
   if (!loggedIn) {
     alert("Please login to attempt the test!");
@@ -22,6 +25,28 @@ const Quiz = () => {
     );
   }
 
+  const url = "http://localhost/WebTechProj/api/login.php";
+
+  axios
+    .get(url)
+    .then(function (response) {
+      if (response?.data && response?.status == 200) {
+        localStorage.setItem("role", response?.data?.role);
+      } else if (response?.status != 200) {
+        console.error("Connection failed");
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+  useEffect(() => {
+    const Currentrole = localStorage.getItem("role");
+    if (Currentrole == "admin") {
+      setAdmin(true);
+    }
+  });
+
   return (
     <>
       {loggedIn ? (
@@ -30,10 +55,24 @@ const Quiz = () => {
             <div className="quiz_sidenav">
               <div className="options">
                 <ul className="options_ul">
-                  <CustomLink to="/quiz">Test</CustomLink>
-                  <CustomLink to="/progress">Progress</CustomLink>
-                  <CustomLink to="/add">Add Questions</CustomLink>
-                  <CustomLink to="/download">Download File</CustomLink>
+                  {admin ? (
+                    <>
+                      <CustomLink to="/quiz">Test</CustomLink>
+                      <CustomLink to="/progress">Progress</CustomLink>
+                      <CustomLink to="/profile">Change Profile</CustomLink>
+                    </>
+                  ) : (
+                    <>
+                      <CustomLink to="/quiz">Test</CustomLink>
+                      <CustomLink to="/progress">Progress</CustomLink>
+                      <CustomLink to="/profile">Change Profile</CustomLink>
+                      <CustomLink to="/add">Add Questions</CustomLink>
+                      <CustomLink to="/download">Download File</CustomLink>
+                      <CustomLink to="/registerAdmin">
+                        Register Others
+                      </CustomLink>
+                    </>
+                  )}
                 </ul>
               </div>
             </div>

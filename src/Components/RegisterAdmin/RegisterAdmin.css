@@ -1,0 +1,128 @@
+.registerAdmin {
+  display: flex;
+  justify-content: space-between;
+}
+.registerAdmin_sidenav {
+  background: #e7e8e2;
+  height: 94.7vh;
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+.registerAdmin .options {
+  height: 50%;
+  text-decoration: none;
+  width: 100%;
+  font-family: "DM Serif Display", serif;
+}
+.registerAdmin .options_ul {
+  list-style: none;
+  gap: 2rem;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  margin-top: 40px;
+}
+.registerAdmin .options_li {
+  text-decoration: none;
+  width: 100%;
+  padding: 5px;
+  text-align: center;
+}
+.registerAdmin .options_li a {
+  color: #940242;
+}
+.registerAdmin .options_li.active {
+  background: #940242;
+  opacity: 70%;
+}
+.registerAdmin .options_li.active a {
+  color: white;
+  opacity: 100%;
+}
+.registerAdmin_link {
+  text-decoration: none;
+  font-size: 20px;
+}
+.registerAdmin_mainWindow {
+  height: 94.7vh;
+  width: 85%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+}
+.registerAdmin_box {
+  background: #e7e8e2;
+  height: 85%;
+  width: 80%;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.registerAdmin_innerBox {
+  display: flex;
+  height: 37rem;
+  width: 65rem;
+  justify-content: space-between;
+}
+.registerAdmin_left {
+  width: 60%;
+  height: 31rem;
+  margin-left: 50px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.registerAdmin_img {
+  height: 100%;
+}
+.registerAdmin_right {
+  margin-right: 50px;
+  margin-bottom: 50px;
+  margin-top: 50px;
+  height: 31rem;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  justify-content: center;
+}
+.registerAdmin_head {
+  font-size: 45px;
+  font-family: "Lobster", sans-serif;
+}
+.registerAdmin_form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: baseline;
+  font-family: "DM Serif Display", serif;
+}
+.Admin_loginField {
+  border: none;
+}
+
+.registerAdmin_btn {
+  border: none;
+  background: #940242;
+  color: white;
+  font-size: 18px;
+  padding: 0 20px;
+  margin-top: 10px;
+  font-family: "Lobster", sans-serif;
+}
+
+.Adminform_container {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+.error_msg {
+  font-size: 11px;
+  color: red;
+}
