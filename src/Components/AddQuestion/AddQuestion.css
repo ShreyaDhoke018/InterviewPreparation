@@ -43,3 +43,52 @@
   color: white;
   opacity: 100%;
 }
+.Add_mainWindow {
+  height: 94.7vh;
+  width: 85%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+}
+.Add_box {
+  background: #e7e8e2;
+  height: 85%;
+  width: 80%;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: space-evenly;
+}
+.Add_head {
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
+  font-family: "Lobster", sans-serif;
+}
+.Add_form {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  flex-wrap: wrap;
+  margin: 50px;
+  font-size: 20px;
+  font-family: "DM Serif Display", serif;
+}
+.Add_btn {
+  border: none;
+  background: #940242;
+  color: white;
+  font-size: 18px;
+  padding: 0 20px;
+  font-family: "Lobster", sans-serif;
+}
+input[type="file"]::file-selector-button {
+  border: none;
+  background: #940242;
+  color: white;
+  font-size: 18px;
+  padding: 0 20px;
+  font-family: "Lobster", sans-serif;
+}

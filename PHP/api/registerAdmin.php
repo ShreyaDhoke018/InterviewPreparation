@@ -2,13 +2,12 @@
     header('Access-Control-Allow-Origin: *'); // Ensure it matches the React app port
     header('Access-Control-Allow-Methods: *');
     header('Access-Control-Allow-Headers: *');
-    // // phpinfo();
-    
+
     $email = $_POST['email'];
     $username = $_POST['username'];
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
-    $role = "student";
+    $role = "admin";
     $response = [];
     $con = mysqli_connect("localhost:3306","root","","webproj") or die("failed to connect ");
      $email = mysqli_real_escape_string($con, $email);
@@ -46,4 +45,5 @@
 echo json_encode($response);  
 
 ?>
- 
+
+

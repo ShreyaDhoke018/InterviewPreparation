@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import "./DownloadFile.css";
+import "./Profile.css";
 import { useMatch, useResolvedPath } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser, faLock, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
-const DownloadFile = () => {
+const Profile = () => {
   const [admin, setAdmin] = useState(false);
 
   function CustomLink({ to, children }) {
@@ -13,13 +15,12 @@ const DownloadFile = () => {
 
     return (
       <li className={isActive ? "options_li active" : "options_li"}>
-        <Link to={to} className="quiz_link">
+        <Link to={to} className="registerAdmin_link">
           {children}
         </Link>
       </li>
     );
   }
-
   const url = "http://localhost/WebTechProj/api/login.php";
 
   axios
@@ -43,8 +44,8 @@ const DownloadFile = () => {
   });
 
   return (
-    <div className="downloadFile">
-      <div className="downloadFile_sidenav">
+    <div className="profile">
+      <div className="profile_sidenav">
         <div className="options">
           <ul className="options_ul">
             {admin ? (
@@ -70,4 +71,4 @@ const DownloadFile = () => {
   );
 };
 
-export default DownloadFile;
+export default Profile;

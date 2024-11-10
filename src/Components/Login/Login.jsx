@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
 import Register from "./Register";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import axios from "axios";
 
 import { AuthContext } from "./../AuthContext/AuthContext";
@@ -33,7 +33,10 @@ const Login = () => {
         if (response?.data && response.status == 200) {
           setSuccess(true);
           localStorage.setItem("isLoggedIn", "true");
-          setUsername(response?.data?.username);
+          // setUsername(response?.data?.username);
+          // name = response?.data?.username;
+          localStorage.setItem("username", response?.data?.username);
+
           console.log(response.data);
         } else if (response?.status != 200) {
           console.error("Connection failed");
@@ -43,15 +46,6 @@ const Login = () => {
         console.log(error);
       });
   };
-  // setUsername(
-  //   axios
-  //     .get("http://localhost/WebTechProj/api/login.php")
-  //     .then((response) => response?.data?.username)
-  // );
-
-  // const username = () => {
-  //   const url = "http://localhost/WebTechProj/api/login.php";
-  // };
 
   const logOut = (e) => {
     e.preventDefault();
@@ -61,9 +55,10 @@ const Login = () => {
       .get(url)
       .then(function (response) {
         if (response?.data && response.status == 200) {
-          console.log(response.data);
+          // console.log(response.data);
           setSuccess(false);
           localStorage.removeItem("isLoggedIn");
+          localStorage.removeItem("username");
           navigate("/login");
         } else if (response?.status != 200) {
           console.error("Connection failed");
@@ -73,6 +68,14 @@ const Login = () => {
         console.log(error);
       });
   };
+
+  useEffect(() => {
+    // Retrieve username from localStorage when the component mounts
+    const storedUsername = localStorage.getItem("username");
+    if (storedUsername) {
+      setUsername(storedUsername);
+    }
+  }, []);
 
   return (
     <>

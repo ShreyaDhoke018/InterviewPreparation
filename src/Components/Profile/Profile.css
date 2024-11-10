@@ -1,0 +1,45 @@
+.profile {
+  height: 94.7vh;
+  display: flex;
+  justify-content: space-between;
+}
+.profile_sidenav {
+  background: #e7e8e2;
+  height: 94.7vh;
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+.profile .options {
+  height: 50%;
+  text-decoration: none;
+  width: 100%;
+}
+.profile .options_ul {
+  list-style: none;
+  gap: 2rem;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  margin-top: 40px;
+}
+.profile .options_li {
+  text-decoration: none;
+  width: 100%;
+  padding: 5px;
+  text-align: center;
+}
+.profile .options_li a {
+  color: #940242;
+}
+.profile .options_li.active {
+  background: #940242;
+  opacity: 70%;
+}
+.profile .options_li.active a {
+  color: white;
+  opacity: 100%;
+}
