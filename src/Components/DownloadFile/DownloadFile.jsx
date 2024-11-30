@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "./DownloadFile.css";
 import { useMatch, useResolvedPath } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 
 const DownloadFile = () => {
   const [admin, setAdmin] = useState(false);
+  // to access the state we use UseLocation
+  const location = useLocation();
+  //to extract name from the state
+  const subjName = location?.state ? location?.state?.name : "";
 
   function CustomLink({ to, children }) {
     const resolvedPath = useResolvedPath(to);
@@ -13,7 +17,7 @@ const DownloadFile = () => {
 
     return (
       <li className={isActive ? "options_li active" : "options_li"}>
-        <Link to={to} className="quiz_link">
+        <Link to={to} className="quiz_link" state={subjName}>
           {children}
         </Link>
       </li>

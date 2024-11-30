@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./AddQuestion.css";
-import { useMatch, useResolvedPath } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useMatch, useResolvedPath, useLocation } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 import Papa from "papaparse";
 
@@ -12,12 +12,20 @@ const AddQuestion = () => {
   const [columnArray, setColumnArray] = useState([]);
   const [values, setValues] = useState([]);
 
+  // to access the state we use UseLocation
+  const location = useLocation();
+  //to extract name from the state
+  const { name } = location.state || {};
+  const courseDetails = {
+    name: { name },
+  };
+
   function CustomLink({ to, children }) {
     const resolvedPath = useResolvedPath(to);
     const isActive = useMatch({ path: resolvedPath.pathname });
     return (
       <li className={isActive ? "options_li active" : "options_li"}>
-        <Link to={to} className="quiz_link">
+        <Link to={to} className="quiz_link" state={courseDetails}>
           {children}
         </Link>
       </li>
@@ -49,12 +57,14 @@ const AddQuestion = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const url = "http://localhost/WebTechProj/api/uploadFile.php";
-
+    // const fileInput = file;
     const fileInput = document.getElementById("file");
     const fData = new FormData();
+    // fData.append("file", fileInput);
+    // console.log(fileInput.files);
     fData.append("file", fileInput.files[0]);
-
-    axios;
+    fData.append("subject", subjName.name);
+    // console.log(subjName.name);
     axios
       .post(url, fData, {
         headers: {
@@ -63,8 +73,10 @@ const AddQuestion = () => {
       })
       .then(function (response) {
         if (response?.data && response?.status == 200) {
+          alert(response?.data?.success);
           console.log(response?.data);
           // alert(response?.data?.extn_type);
+          // setFile("");
         } else {
           console.error("Connection failed");
         }
@@ -74,25 +86,25 @@ const AddQuestion = () => {
       });
   };
 
-  const handleFile = (e) => {
-    Papa.parse(e.target.files[0], {
-      header: true,
-      skipEmptyLines: true,
-      complete: function (result) {
-        const columnArray = [];
-        const valuesArray = [];
+  // const handleFile = (e) => {
+  //   Papa.parse(e.target.files[0], {
+  //     header: true,
+  //     skipEmptyLines: true,
+  //     complete: function (result) {
+  //       const columnArray = [];
+  //       const valuesArray = [];
 
-        result.data.map((d) => {
-          columnArray.push(Object.keys(d));
-          valuesArray.push(Object.values(d));
-        });
+  //       result.data.map((d) => {
+  //         columnArray.push(Object.keys(d));
+  //         valuesArray.push(Object.values(d));
+  //       });
 
-        setData(result.data);
-        setColumnArray(columnArray[0]);
-        setValues(valuesArray);
-      },
-    });
-  };
+  //       setData(result.data);
+  //       setColumnArray(columnArray[0]);
+  //       setValues(valuesArray);
+  //     },
+  //   });
+  // };
 
   return (
     <div className="addQuestion">
@@ -140,10 +152,11 @@ const AddQuestion = () => {
               id="file"
               accept=".csv"
               className="Add_file"
-              // onChange={handleFile}
-              onChange={(e) => {
-                setFile(e.target.value);
-              }}
+              // value={file}
+              // onChange={(e) => {
+              // setFile(e.target.value);
+              // }}
+              // multiple
             />
             <br></br>
             <input type="submit" value="Upload" className="Add_btn" />

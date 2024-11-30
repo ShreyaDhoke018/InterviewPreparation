@@ -124,3 +124,16 @@ input[type="radio"]:checked + .quiz_radio {
   border-radius: 5px;
   font-family: "DM Serif Display", serif;
 }
+.quiz_prevBtn {
+  border: none;
+  background: #940242;
+  color: white;
+  padding: 0 20px;
+  font-size: 20px;
+  border-radius: 5px;
+  font-family: "DM Serif Display", serif;
+}
+.quiz_btn {
+  display: flex;
+  justify-content: space-evenly;
+}

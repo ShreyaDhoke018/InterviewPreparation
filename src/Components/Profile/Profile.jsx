@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from "react";
 import "./Profile.css";
 import { useMatch, useResolvedPath } from "react-router-dom";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
 const Profile = () => {
   const [admin, setAdmin] = useState(false);
+  // to access the state we use UseLocation
+  const location = useLocation();
+  //to extract name from the state
+  const subjName = location?.state ? location?.state?.name : "";
 
   function CustomLink({ to, children }) {
     const resolvedPath = useResolvedPath(to);
@@ -15,7 +19,7 @@ const Profile = () => {
 
     return (
       <li className={isActive ? "options_li active" : "options_li"}>
-        <Link to={to} className="registerAdmin_link">
+        <Link to={to} className="registerAdmin_link" state={subjName}>
           {children}
         </Link>
       </li>
