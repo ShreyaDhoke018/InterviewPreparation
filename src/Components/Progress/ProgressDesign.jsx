@@ -1,12 +1,21 @@
 import React, { useState, useEffect } from "react";
 import "./Progress.css";
 import { useMatch, useResolvedPath } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import axios from "axios";
 
 const Progress = () => {
   const [admin, setAdmin] = useState(false);
+  const [score, setScore] = useState(0);
+
+  // to access the state we use UseLocation
+  const location = useLocation();
+  console.log(location);
+  //to extract name from the state
+
+  const subjName = location?.state ? location?.state : "";
+  const username = localStorage.getItem("username");
 
   function CustomLink({ to, children }) {
     const resolvedPath = useResolvedPath(to);
@@ -14,7 +23,7 @@ const Progress = () => {
 
     return (
       <li className={isActive ? "options_li active" : "options_li"}>
-        <Link to={to} className="progess_link">
+        <Link to={to} className="progess_link" state={subjName}>
           {children}
         </Link>
       </li>
@@ -43,6 +52,25 @@ const Progress = () => {
     }
   });
 
+  const url3 = "http://localhost/WebTechProj/api/previousProgress.php";
+  const fData3 = new FormData();
+  fData3.append("subject", subjName);
+  console.log("Subject:", subjName);
+  fData3.append("username", username);
+  axios
+    .post(url3, fData3)
+    .then(function (response) {
+      if (response?.data && response.status == 200) {
+        console.log(response.data);
+        setScore(response?.data?.score);
+      } else if (response?.status != 200) {
+        console.error("Connection failed");
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
   return (
     <div className="progress_window">
       <div className="progress_sidenav">
@@ -68,8 +96,17 @@ const Progress = () => {
         </div>
       </div>
       <div className="progress_mainWindow">
-        <p className="progress_head">Your Progress is: </p>
-        <ProgressBar now={80} className="custom-bar" />
+        <div className="progress_box">
+          <p className="progress_head">Your Progress is: </p>
+          <ProgressBar now={score} className="custom-bar" />
+          <div>
+            <p className="progress_report">
+              Your previous Score:
+              <br></br>
+              {score}
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
