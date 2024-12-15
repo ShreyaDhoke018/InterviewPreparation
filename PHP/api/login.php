@@ -24,6 +24,7 @@
                         $response['login_status']="login successful";
                         $response['username'] = $row["username"];
                         $response['role'] = $row["role"];
+                        $response['id'] = $row["id"];
                         $_SESSION["email"] = $email;
                         if(isset($_SESSION['email'])){
                             $response['session'] = "Session started";

@@ -54,7 +54,7 @@ const Progress = () => {
 
   const url3 = "http://localhost/WebTechProj/api/previousProgress.php";
   const fData3 = new FormData();
-  fData3.append("subject", subjName);
+  fData3.append("subject", subjName.name);
   console.log("Subject:", subjName);
   fData3.append("username", username);
   axios
@@ -62,6 +62,7 @@ const Progress = () => {
     .then(function (response) {
       if (response?.data && response.status == 200) {
         console.log(response.data);
+        console.log(response?.data?.score);
         setScore(response?.data?.score);
       } else if (response?.status != 200) {
         console.error("Connection failed");
@@ -89,6 +90,7 @@ const Progress = () => {
                 <CustomLink to="/profile">Change Profile</CustomLink>
                 <CustomLink to="/add">Add Questions</CustomLink>
                 <CustomLink to="/download">Download File</CustomLink>
+                <CustomLink to="/deleteQuestion">Delete Questions</CustomLink>
                 <CustomLink to="/registerAdmin">Register Others</CustomLink>
               </>
             )}

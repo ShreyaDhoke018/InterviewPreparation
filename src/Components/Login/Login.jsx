@@ -36,7 +36,8 @@ const Login = () => {
           // setUsername(response?.data?.username);
           // name = response?.data?.username;
           localStorage.setItem("username", response?.data?.username);
-
+          localStorage.setItem("role", response?.data?.role);
+          localStorage.setItem("id", response?.data?.id);
           console.log(response.data);
         } else if (response?.status != 200) {
           console.error("Connection failed");

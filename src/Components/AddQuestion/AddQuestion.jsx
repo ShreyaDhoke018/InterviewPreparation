@@ -3,49 +3,42 @@ import "./AddQuestion.css";
 import { useMatch, useResolvedPath, useLocation } from "react-router-dom";
 import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
-import Papa from "papaparse";
 
 const AddQuestion = () => {
   const [admin, setAdmin] = useState(false);
-  const [file, setFile] = useState("");
-  const [data, setData] = useState([]);
   const [columnArray, setColumnArray] = useState([]);
   const [values, setValues] = useState([]);
 
   // to access the state we use UseLocation
   const location = useLocation();
-  //to extract name from the state
-  const { name } = location.state || {};
-  const courseDetails = {
-    name: { name },
-  };
+  const subjName = location?.state ? location?.state : "";
 
   function CustomLink({ to, children }) {
     const resolvedPath = useResolvedPath(to);
     const isActive = useMatch({ path: resolvedPath.pathname });
     return (
       <li className={isActive ? "options_li active" : "options_li"}>
-        <Link to={to} className="quiz_link" state={courseDetails}>
+        <Link to={to} className="quiz_link" state={subjName}>
           {children}
         </Link>
       </li>
     );
   }
 
-  const url = "http://localhost/WebTechProj/api/login.php";
+  // const url = "http://localhost/WebTechProj/api/login.php";
 
-  axios
-    .get(url)
-    .then(function (response) {
-      if (response?.data && response?.status == 200) {
-        localStorage.setItem("role", response?.data?.role);
-      } else if (response?.status != 200) {
-        console.error("Connection failed");
-      }
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+  // axios
+  //   .get(url)
+  //   .then(function (response) {
+  //     if (response?.data && response?.status == 200) {
+  //       localStorage.setItem("role", response?.data?.role);
+  //     } else if (response?.status != 200) {
+  //       console.error("Connection failed");
+  //     }
+  //   })
+  //   .catch(function (error) {
+  //     console.log(error);
+  //   });
 
   useEffect(() => {
     const Currentrole = localStorage.getItem("role");
@@ -75,6 +68,7 @@ const AddQuestion = () => {
         if (response?.data && response?.status == 200) {
           alert(response?.data?.success);
           console.log(response?.data);
+          window.location.reload(false);
           // alert(response?.data?.extn_type);
           // setFile("");
         } else {
@@ -124,6 +118,7 @@ const AddQuestion = () => {
                 <CustomLink to="/profile">Change Profile</CustomLink>
                 <CustomLink to="/add">Add Questions</CustomLink>
                 <CustomLink to="/download">Download File</CustomLink>
+                <CustomLink to="/deleteQuestion">Delete Questions</CustomLink>
                 <CustomLink to="/registerAdmin">Register Others</CustomLink>
               </>
             )}
@@ -136,9 +131,29 @@ const AddQuestion = () => {
             <p>Upload .csv File with Question:</p>
           </div>
           <div className="Add_drag">
-            <img src="src/assets/file.png" className="Add_img"></img>
-            <br></br>
-            <p style={{ fontSize: "15px" }}>Drag & Drop your files here</p>
+            <p>The FILE FORMAT should be as follows:</p>
+            <table className="table table-bordered w-50">
+              <thead>
+                <tr>
+                  <th>Question</th>
+                  <th>Option1</th>
+                  <th>Option2</th>
+                  <th>Option3</th>
+                  <th>Option4</th>
+                  <th>Answer</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>abc</td>
+                  <td>a</td>
+                  <td>b</td>
+                  <td>c</td>
+                  <td>d</td>
+                  <td>b</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
           <form
             className="Add_form"

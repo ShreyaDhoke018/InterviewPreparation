@@ -26,6 +26,12 @@ const Navbar2 = () => {
     const location = useLocation();
     const isRegisterPage = location.pathname === "/register";
     const isQuizPage = location.pathname === "/quiz";
+    const isProgressPage = location.pathname === "/progress";
+    const isProfilePage = location.pathname === "/profile";
+    const isAddPage = location.pathname === "/add";
+    const isDowloadPage = location.pathname === "/download";
+    const isDeletePage = location.pathname === "/deleteQuestion";
+    const isRegisterAdminPage = location.pathname === "/registerAdmin";
 
     // Check if the link is for Login, and activate it if on register page
     let shouldBeActive;
@@ -35,7 +41,16 @@ const Navbar2 = () => {
       shouldBeActive = isActive;
     }
 
-    if (to === "/Subjects" && isQuizPage) {
+    if (
+      (to === "/Subjects" && isQuizPage) ||
+      (to === "/Subjects" && isProfilePage) ||
+      (to === "/Subjects" && isAddPage) ||
+      (to === "/Subjects" && isDeletePage) ||
+      (to === "/Subjects" && isProgressPage) ||
+      (to === "/Subjects" && isProfilePage) ||
+      (to === "/Subjects" && isDowloadPage) ||
+      (to === "/Subjects" && isRegisterAdminPage)
+    ) {
       shouldBeActive = true;
     } else {
       shouldBeActive = isActive;
