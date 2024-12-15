@@ -18,6 +18,7 @@ const Quiz = () => {
   const location = useLocation();
 
   const subjName = location?.state ? location?.state : "";
+  console.log(subjName.name);
 
   const username = localStorage.getItem("username");
   const loggedIn = localStorage.getItem("isLoggedIn");
@@ -41,18 +42,18 @@ const Quiz = () => {
 
   const url = "http://localhost/WebTechProj/api/login.php"; //to fetch login details
 
-  axios
-    .get(url)
-    .then(function (response) {
-      if (response?.data && response?.status == 200) {
-        localStorage.setItem("role", response?.data?.role);
-      } else if (response?.status != 200) {
-        console.error("Connection failed");
-      }
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+  // axios
+  //   .get(url)
+  //   .then(function (response) {
+  //     if (response?.data && response?.status == 200) {
+  //       localStorage.setItem("role", response?.data?.role);
+  //     } else if (response?.status != 200) {
+  //       console.error("Connection failed");
+  //     }
+  //   })
+  //   .catch(function (error) {
+  //     console.log(error);
+  //   });
 
   useEffect(() => {
     const Currentrole = localStorage.getItem("role");
@@ -63,13 +64,14 @@ const Quiz = () => {
 
   const url2 = "http://localhost/WebTechProj/api/retrieveQuestion.php"; //to fetch the questions
   const fData = new FormData();
-  fData.append("subject", subjName);
-  axios.post(url2, fData);
+  fData.append("subject", subjName.name);
+  // axios.post(url2, fData);
   useEffect(() => {
     axios
-      .get(url2)
+      .post(url2, fData)
       .then(function (response) {
         if (response?.data && response.status == 200) {
+          console.log(response?.data);
           setQuestions(response?.data);
         } else if (response?.status != 200) {
           console.error("Connection failed");
@@ -177,6 +179,9 @@ const Quiz = () => {
                       <CustomLink to="/profile">Change Profile</CustomLink>
                       <CustomLink to="/add">Add Questions</CustomLink>
                       <CustomLink to="/download">Download File</CustomLink>
+                      <CustomLink to="/deleteQuestion">
+                        Delete Questions
+                      </CustomLink>
                       <CustomLink to="/registerAdmin">
                         Register Others
                       </CustomLink>
@@ -190,7 +195,7 @@ const Quiz = () => {
                 <form method="post" onSubmit={handleSubmit}>
                   <div className="quiz_question">
                     <p>
-                      Question {currentQuestionIndex + 1}:
+                      Question {currentQuestionIndex + 1}: &nbsp;
                       {currentQuestion.question}
                     </p>
                   </div>
@@ -264,36 +269,40 @@ const Quiz = () => {
                       <br></br>
                       Score: {score}
                     </p>
-
-                    <br></br>
                   </div>
+                </form>
+              </div>
 
-                  <div className="quiz_btn">
-                    <div className="quiz_prev">
-                      <input
-                        type="button"
-                        value="Previous"
-                        className="quiz_prevBtn"
-                        onClick={prevQuestion}
-                        disabled={currentQuestionIndex + 1 > questions.length}
-                      />
-                    </div>
-                    <div className="quiz_submit">
-                      <input
-                        type="submit"
-                        value="Submit"
-                        className="quiz_submitBtn"
-                      />
-                    </div>
-                    <div className="quiz_next">
-                      <input
-                        type="button"
-                        value="Next"
-                        className="quiz_nextBtn"
-                        onClick={nextQuestion}
-                        disabled={currentQuestionIndex + 1 >= questions.length}
-                      />
-                    </div>
+              <div className="quiz_btn">
+                <form
+                  method="post"
+                  onSubmit={handleSubmit}
+                  className="quiz_BtnsForm"
+                >
+                  <div className="quiz_prev">
+                    <input
+                      type="button"
+                      value="Previous"
+                      className="quiz_prevBtn"
+                      onClick={prevQuestion}
+                      disabled={currentQuestionIndex + 1 > questions.length}
+                    />
+                  </div>
+                  <div className="quiz_submit">
+                    <input
+                      type="submit"
+                      value="Submit"
+                      className="quiz_submitBtn"
+                    />
+                  </div>
+                  <div className="quiz_next">
+                    <input
+                      type="button"
+                      value="Next"
+                      className="quiz_nextBtn"
+                      onClick={nextQuestion}
+                      disabled={currentQuestionIndex + 1 >= questions.length}
+                    />
                   </div>
                 </form>
               </div>

@@ -1,3 +1,6 @@
 question,option1,option2,option3,option4,answer
 Full Form of JS,JavaScript,JavaStyle,JavasScript,JavasStyle,JavaScript
+"Consider a database table T containing two columns X and Y each of type integer. After the creation of the table, one record (X=1, Y=1) is inserted in the table. Let MX and My denote the respective maximum values of X and Y among all records in the table at any point in time. Using MX and MY, new records are inserted in the table 128 times with X and Y values being MX+1, 2*MY+1 respectively. It may be noted that each time after the insertion, values of MX and MY change. What will be the output of the following SQL query after the steps mentioned above are carried out?
+SELECT Y FROM T WHERE X=7;",127,255,129,257,127
 2+2,3,4,6,5,4
+Oops concept?,Polymorphism,Abstraction,Both,None of above,Both

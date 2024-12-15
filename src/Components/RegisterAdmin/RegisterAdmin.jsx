@@ -113,6 +113,9 @@ const RegisterAdmin = () => {
                     <CustomLink to="/profile">Change Profile</CustomLink>
                     <CustomLink to="/add">Add Questions</CustomLink>
                     <CustomLink to="/download">Download File</CustomLink>
+                    <CustomLink to="/deleteQuestion">
+                      Delete Questions
+                    </CustomLink>
                     <CustomLink to="/registerAdmin">Register Others</CustomLink>
                   </>
                 )}

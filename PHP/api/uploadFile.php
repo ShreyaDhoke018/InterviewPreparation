@@ -54,13 +54,15 @@ if(isset($fname)){
             $headers_file = fgets($file);
             while(($line = fgets($file3))!== false){
                 $existing_data[] = trim($line);
+                $response['existing_data'] = $existing_data;
                 // echo $existing_data;
             }
-
+           
             while (!feof($file)) {
                 $line = fgets($file);
                 if ($line !== false) { // Ensure line is valid
                     $line = trim($line);
+                    $response['line'] = $line;
                     if(!in_array($line,$existing_data)){
                         //$data = $line; // Store the current line
                         fwrite($file2, $line. PHP_EOL);
@@ -70,15 +72,6 @@ if(isset($fname)){
                 }   
             }
             
-
-            // while (($row = fgetcsv($file)) !== false) {
-            //         $question = $row[0];
-            //         $option1 = $row[1];
-            //         $option2 = $row[2];
-            //         $option3 = $row[3];
-            //         $option4 = $row[4];
-            //         $answer = $row[5];
-            // }
             fclose($file);
             fclose($file2);
             $response["success"] = "File uploaded!";

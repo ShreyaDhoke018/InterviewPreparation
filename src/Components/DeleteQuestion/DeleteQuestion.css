@@ -1,9 +1,9 @@
-.profile {
+.deleteQuestion {
   height: 94.7vh;
   display: flex;
   justify-content: space-between;
 }
-.profile_sidenav {
+.deleteQuestion_sidenav {
   background: #e7e8e2;
   height: 94.7vh;
   width: 15%;
@@ -11,12 +11,12 @@
   justify-content: center;
   align-items: start;
 }
-.profile .options {
+.deleteQuestion .options {
   height: 50%;
   text-decoration: none;
   width: 100%;
 }
-.profile .options_ul {
+.deleteQuestion .options_ul {
   list-style: none;
   gap: 2rem;
   width: 100%;
@@ -26,24 +26,24 @@
   padding: 0;
   margin-top: 40px;
 }
-.profile .options_li {
+.deleteQuestion .options_li {
   text-decoration: none;
   width: 100%;
   padding: 5px;
   text-align: center;
 }
-.profile .options_li a {
+.deleteQuestion .options_li a {
   color: #940242;
 }
-.profile .options_li.active {
+.deleteQuestion .options_li.active {
   background: #940242;
   opacity: 70%;
 }
-.profile .options_li.active a {
+.deleteQuestion .options_li.active a {
   color: white;
   opacity: 100%;
 }
-.profile_mainWindow {
+.delete_mainWindow {
   height: 94.7vh;
   width: 85%;
   display: flex;
@@ -51,7 +51,7 @@
   align-content: center;
   flex-wrap: wrap;
 }
-.profile_box {
+.delete_box {
   background: #e7e8e2;
   height: 85%;
   width: 80%;
@@ -60,9 +60,8 @@
   flex-direction: column;
   gap: 1rem;
   align-items: center;
-  justify-content: center;
 }
-.profile_head {
+.delete_head {
   display: flex;
   justify-content: center;
   font-size: 40px;
@@ -70,31 +69,28 @@
   flex-wrap: wrap;
   font-family: "Lobster", sans-serif;
 }
-.profile_body {
-  height: 50%;
+.delete_table {
+  height: 80%;
   width: 90%;
-  display: flex;
-  align-content: center;
-  flex-wrap: wrap;
-  justify-content: center;
 }
-.profile_form {
+.delete_form {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  font-family: "DM Serif Display", serif;
+  gap: 0.5rem;
 }
-.profile_formElement {
-  height: 30%;
-  width: 100%;
-  font-size: 18px;
-  padding: 5px 20px;
+.delete_btns {
+  display: flex;
+  justify-content: space-between;
 }
-.profile_btn {
+.delete_individualBtn {
   border: none;
   background: #940242;
   color: white;
   font-size: 18px;
-  padding: 5px 20px;
+  padding: 0 20px;
   font-family: "Lobster", sans-serif;
+}
+.table_container {
+  max-height: 445px;
+  overflow-y: auto;
 }

@@ -7,6 +7,8 @@
     $username = $_POST['username'];
     $response = [];
     $score = 0;
+    $id = 0;
+    $subj_id = 0;
     // $id = null;
     // $subj_id = null;
     $conn = mysqli_connect("localhost","root","","webproj");
@@ -30,12 +32,13 @@
         
     }
 
-    $sql3 = "select * from progress where sid=".$id;
+    $sql3 = "select marks from progress where sid=".$id." and subj_id=".$subj_id.";";
     $query3 = $conn -> query($sql3);
     if($query3 ->num_rows >0){
        while($row = $query3 -> fetch_assoc()){
             $score = $row["marks"];
             $response["score"] = $score; 
+             
         }
                     
     }
