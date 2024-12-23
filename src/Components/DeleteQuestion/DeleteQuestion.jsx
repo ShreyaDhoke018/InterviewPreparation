@@ -11,7 +11,7 @@ const DeleteQuestion = () => {
 
   const location = useLocation();
   const subjName = location?.state ? location?.state : "";
-  console.log(subjName);
+  // console.log("subjName: " + subjName);
 
   function CustomLink({ to, children }) {
     const resolvedPath = useResolvedPath(to);
@@ -25,21 +25,6 @@ const DeleteQuestion = () => {
       </li>
     );
   }
-
-  // const url = "http://localhost/WebTechProj/api/login.php";
-
-  // axios
-  //   .get(url)
-  //   .then(function (response) {
-  //     if (response?.data && response?.status == 200) {
-  //       localStorage.setItem("role", response?.data?.role);
-  //     } else if (response?.status != 200) {
-  //       console.error("Connection failed");
-  //     }
-  //   })
-  //   .catch(function (error) {
-  //     console.log(error);
-  //   });
 
   useEffect(() => {
     const Currentrole = localStorage.getItem("role");
@@ -119,7 +104,7 @@ const DeleteQuestion = () => {
         .then(function (response) {
           if (response?.data && response?.status == 200) {
             alert(response?.data?.msg);
-            console.log("Hello");
+            window.location.reload(false);
             //   console.log("Response is ", response?.data?.question);
             //   console.log("Response of q is ", response?.data?.q);
             // window.location.href = "/add";
@@ -153,6 +138,7 @@ const DeleteQuestion = () => {
                 <CustomLink to="/add">Add Questions</CustomLink>
                 <CustomLink to="/download">Download File</CustomLink>
                 <CustomLink to="/deleteQuestion">Delete Questions</CustomLink>
+                <CustomLink to="/addSubject">Add Subject</CustomLink>
                 <CustomLink to="/registerAdmin">Register Others</CustomLink>
               </>
             )}

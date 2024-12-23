@@ -12,7 +12,7 @@ const DownloadFile = () => {
   // to access the state we use UseLocation
   const location = useLocation();
   const subjName = location?.state ? location?.state : "";
-  console.log(subjName.name);
+  // console.log("subjName: " + subjName);
 
   function CustomLink({ to, children }) {
     const resolvedPath = useResolvedPath(to);
@@ -27,20 +27,6 @@ const DownloadFile = () => {
     );
   }
 
-  const url = "http://localhost/WebTechProj/api/login.php";
-
-  axios
-    .get(url)
-    .then(function (response) {
-      if (response?.data && response?.status == 200) {
-        localStorage.setItem("role", response?.data?.role);
-      } else if (response?.status != 200) {
-        console.error("Connection failed");
-      }
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
 
   useEffect(() => {
     const Currentrole = localStorage.getItem("role");
@@ -86,37 +72,7 @@ const DownloadFile = () => {
     document.body.removeChild(link);
   };
 
-  // const handleSubmit = () => {
-  //   e.preventDefault();
-  //   const url = "http://localhost/WebTechProj/api/uploadFile.php";
-  //   // const fileInput = file;
-  //   const fileInput = document.getElementById("file");
-  //   const fData = new FormData();
-  //   // fData.append("file", fileInput);
-  //   // console.log(fileInput.files);
-  //   fData.append("file", fileInput.files[0]);
-  //   fData.append("subject", subjName.name);
-  //   // console.log(subjName.name);
-  //   axios
-  //     .post(url, fData, {
-  //       headers: {
-  //         "Content-Type": "multipart/form-data",
-  //       },
-  //     })
-  //     .then(function (response) {
-  //       if (response?.data && response?.status == 200) {
-  //         alert(response?.data?.success);
-  //         console.log(response?.data);
-  //         // alert(response?.data?.extn_type);
-  //         // setFile("");
-  //       } else {
-  //         console.error("Connection failed");
-  //       }
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-  // };
+
 
   return (
     <div className="downloadFile">
@@ -137,6 +93,7 @@ const DownloadFile = () => {
                 <CustomLink to="/add">Add Questions</CustomLink>
                 <CustomLink to="/download">Download File</CustomLink>
                 <CustomLink to="/deleteQuestion">Delete Questions</CustomLink>
+                <CustomLink to="/addSubject">Add Subject</CustomLink>
                 <CustomLink to="/registerAdmin">Register Others</CustomLink>
               </>
             )}

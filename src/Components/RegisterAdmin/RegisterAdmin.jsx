@@ -16,7 +16,8 @@ const RegisterAdmin = () => {
   // to access the state we use UseLocation
   const location = useLocation();
   //to extract name from the state
-  const subjName = location?.state ? location?.state?.name : "";
+  const subjName = location?.state ? location?.state : "";
+  // console.log("subjName: " + subjName);
 
   function CustomLink({ to, children }) {
     const resolvedPath = useResolvedPath(to);
@@ -116,6 +117,7 @@ const RegisterAdmin = () => {
                     <CustomLink to="/deleteQuestion">
                       Delete Questions
                     </CustomLink>
+                    <CustomLink to="/addSubject">Add Subject</CustomLink>
                     <CustomLink to="/registerAdmin">Register Others</CustomLink>
                   </>
                 )}

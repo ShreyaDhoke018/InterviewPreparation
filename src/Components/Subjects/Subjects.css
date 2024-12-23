@@ -10,6 +10,8 @@
   margin-left: 50px;
 }
 .subj_courselist {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
 }

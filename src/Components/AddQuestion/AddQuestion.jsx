@@ -12,6 +12,8 @@ const AddQuestion = () => {
   // to access the state we use UseLocation
   const location = useLocation();
   const subjName = location?.state ? location?.state : "";
+  // console.log("subjName: " + subjName);
+  // console.log(subjName.name);
 
   function CustomLink({ to, children }) {
     const resolvedPath = useResolvedPath(to);
@@ -24,21 +26,6 @@ const AddQuestion = () => {
       </li>
     );
   }
-
-  // const url = "http://localhost/WebTechProj/api/login.php";
-
-  // axios
-  //   .get(url)
-  //   .then(function (response) {
-  //     if (response?.data && response?.status == 200) {
-  //       localStorage.setItem("role", response?.data?.role);
-  //     } else if (response?.status != 200) {
-  //       console.error("Connection failed");
-  //     }
-  //   })
-  //   .catch(function (error) {
-  //     console.log(error);
-  //   });
 
   useEffect(() => {
     const Currentrole = localStorage.getItem("role");
@@ -57,48 +44,25 @@ const AddQuestion = () => {
     // console.log(fileInput.files);
     fData.append("file", fileInput.files[0]);
     fData.append("subject", subjName.name);
-    // console.log(subjName.name);
+    console.log(subjName.name);
     axios
-      .post(url, fData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
+      .post(url, fData)
       .then(function (response) {
         if (response?.data && response?.status == 200) {
-          alert(response?.data?.success);
+          if (response?.data?.msg != "") {
+            alert(response?.data?.msg);
+          }
           console.log(response?.data);
-          window.location.reload(false);
-          // alert(response?.data?.extn_type);
-          // setFile("");
+          window.location.reload();
         } else {
           console.error("Connection failed");
         }
+        // window.location.reload(false);
       })
       .catch(function (error) {
         console.log(error);
       });
   };
-
-  // const handleFile = (e) => {
-  //   Papa.parse(e.target.files[0], {
-  //     header: true,
-  //     skipEmptyLines: true,
-  //     complete: function (result) {
-  //       const columnArray = [];
-  //       const valuesArray = [];
-
-  //       result.data.map((d) => {
-  //         columnArray.push(Object.keys(d));
-  //         valuesArray.push(Object.values(d));
-  //       });
-
-  //       setData(result.data);
-  //       setColumnArray(columnArray[0]);
-  //       setValues(valuesArray);
-  //     },
-  //   });
-  // };
 
   return (
     <div className="addQuestion">
@@ -119,6 +83,7 @@ const AddQuestion = () => {
                 <CustomLink to="/add">Add Questions</CustomLink>
                 <CustomLink to="/download">Download File</CustomLink>
                 <CustomLink to="/deleteQuestion">Delete Questions</CustomLink>
+                <CustomLink to="/addSubject">Add Subject</CustomLink>
                 <CustomLink to="/registerAdmin">Register Others</CustomLink>
               </>
             )}
@@ -176,7 +141,7 @@ const AddQuestion = () => {
             <br></br>
             <input type="submit" value="Upload" className="Add_btn" />
           </form>
-          <table>
+          {/* <table>
             <thead>
               <tr>
                 {columnArray.map((col, i) => (
@@ -193,7 +158,7 @@ const AddQuestion = () => {
                 </tr>
               ))}
             </tbody>
-          </table>
+          </table> */}
         </div>
       </div>
     </div>
