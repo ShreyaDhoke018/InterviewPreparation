@@ -13,6 +13,7 @@ import AddQuestion from "./Components/AddQuestion/AddQuestion";
 import RegisterAdmin from "./Components/RegisterAdmin/RegisterAdmin";
 import Profile from "./Components/Profile/Profile";
 import DeleteQuestion from "./Components/DeleteQuestion/DeleteQuestion";
+import AddSubject from "./Components/AddSubject/AddSubject";
 
 const App = () => {
   return (
@@ -33,6 +34,7 @@ const App = () => {
         <Route path="/deleteQuestion" element={<DeleteQuestion />}></Route>
         <Route path="/registerAdmin" element={<RegisterAdmin />}></Route>
         <Route path="/profile" element={<Profile />}></Route>
+        <Route path="/addSubject" element={<AddSubject />}></Route>
       </Routes>
     </div>
   );

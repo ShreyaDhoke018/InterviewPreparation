@@ -1,0 +1,87 @@
+.addSubject {
+  height: 94.7vh;
+  display: flex;
+  justify-content: space-between;
+}
+.addSubject_sidenav {
+  background: #e7e8e2;
+  height: 94.7vh;
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+.addSubject .options {
+  height: 50%;
+  text-decoration: none;
+  width: 100%;
+}
+.addSubject .options_ul {
+  list-style: none;
+  gap: 2rem;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  margin-top: 40px;
+}
+.addSubject .options_li {
+  text-decoration: none;
+  width: 100%;
+  padding: 5px;
+  text-align: center;
+}
+.addSubject .options_li a {
+  color: #940242;
+}
+.addSubject .options_li.active {
+  background: #940242;
+  opacity: 70%;
+}
+.addSubject .options_li.active a {
+  color: white;
+  opacity: 100%;
+}
+.addSubject_mainWindow {
+  height: 94.7vh;
+  width: 85%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+}
+.addSubject_box {
+  background: #e7e8e2;
+  height: 75%;
+  width: 70%;
+  border-radius: 8px;
+  display: flex;
+  padding: 20px;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+}
+.addSubject_head {
+  display: flex;
+  justify-content: center;
+  font-size: 50px;
+  font-family: "Lobster", sans-serif;
+}
+.addSubject_form {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  flex-wrap: wrap;
+  margin: 50px;
+  font-size: 22px;
+  font-family: "DM Serif Display", serif;
+}
+.addSubject_btn {
+  border: none;
+  background: #940242;
+  color: white;
+  font-size: 18px;
+  padding: 0 20px;
+  font-family: "Lobster", sans-serif;
+}

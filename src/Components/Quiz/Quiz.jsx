@@ -14,10 +14,14 @@ const Quiz = () => {
   const [score, setScore] = useState(0); // stores the marks
   const [count, setCount] = useState(1); // stores if the question was attempted or no
 
+  console.log("Question length: " + questions.length);
+  console.log("Question: " + questions);
+
   // to access the state we use UseLocation
   const location = useLocation();
 
   const subjName = location?.state ? location?.state : "";
+  console.log("subjName: " + subjName);
   console.log(subjName.name);
 
   const username = localStorage.getItem("username");
@@ -41,19 +45,6 @@ const Quiz = () => {
   }
 
   const url = "http://localhost/WebTechProj/api/login.php"; //to fetch login details
-
-  // axios
-  //   .get(url)
-  //   .then(function (response) {
-  //     if (response?.data && response?.status == 200) {
-  //       localStorage.setItem("role", response?.data?.role);
-  //     } else if (response?.status != 200) {
-  //       console.error("Connection failed");
-  //     }
-  //   })
-  //   .catch(function (error) {
-  //     console.log(error);
-  //   });
 
   useEffect(() => {
     const Currentrole = localStorage.getItem("role");
@@ -106,12 +97,17 @@ const Quiz = () => {
   };
 
   if (questions.length === 0) {
-    return <p>No questions available.</p>;
+    return (
+      <div>
+        <p>No questions available.</p>
+        <CustomLink to="/add">Add Questions</CustomLink>
+      </div>
+    );
   }
   const currentQuestion = questions[currentQuestionIndex];
 
-  console.log("currentQuestion.answer", currentQuestion.answer);
-  console.log("answer", answer);
+  // console.log("currentQuestion.answer", currentQuestion.answer);
+  // console.log("answer", answer);
 
   const handleSubmit = (e) => {
     //to check answer and set score
@@ -141,7 +137,7 @@ const Quiz = () => {
 
     const url3 = "http://localhost/WebTechProj/api/progress.php";
     const fData = new FormData();
-    fData.append("subject", subjName?.name);
+    fData.append("subject", subjName.name);
     fData.append("score", newScore);
     fData.append("username", username);
     axios
@@ -171,6 +167,7 @@ const Quiz = () => {
                       <CustomLink to="/quiz">Test</CustomLink>
                       <CustomLink to="/progress">Progress</CustomLink>
                       <CustomLink to="/profile">Change Profile</CustomLink>
+                      <CustomLink to="/download">Download File</CustomLink>
                     </>
                   ) : (
                     <>
@@ -182,6 +179,7 @@ const Quiz = () => {
                       <CustomLink to="/deleteQuestion">
                         Delete Questions
                       </CustomLink>
+                      <CustomLink to="/addSubject">Add Subject</CustomLink>
                       <CustomLink to="/registerAdmin">
                         Register Others
                       </CustomLink>
@@ -206,8 +204,9 @@ const Quiz = () => {
                         name="options"
                         id="option1"
                         value={currentQuestion.option1}
+                        // The checked property in React (and HTML) is used with radio buttons and checkboxes to determine whether they are selected or not.
+                        checked={answer === currentQuestion.option1}
                         onClick={(event) => {
-                          console.log(event.target.value);
                           setAnswer(event.target.value);
                         }}
                       />
@@ -222,6 +221,7 @@ const Quiz = () => {
                         name="options"
                         id="option2"
                         value={currentQuestion.option2}
+                        checked={answer === currentQuestion.option2}
                         onClick={(event) => {
                           setAnswer(event.target.value);
                         }}
@@ -237,6 +237,7 @@ const Quiz = () => {
                         name="options"
                         id="option3"
                         value={currentQuestion.option3}
+                        checked={answer === currentQuestion.option3}
                         onClick={(event) => {
                           setAnswer(event.target.value);
                         }}
@@ -252,6 +253,7 @@ const Quiz = () => {
                         name="options"
                         id="option4"
                         value={currentQuestion.option4}
+                        checked={answer === currentQuestion.option4}
                         onClick={(event) => {
                           setAnswer(event.target.value);
                         }}
